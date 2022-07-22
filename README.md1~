@@ -1,1 +1,3 @@
 # focus-visible-test
+
+This displays an example of focus-visible. If a button/link is clicked on, the focus state does not display. However, if the button/link are navigated to via keyboard, the focus state will display. 
