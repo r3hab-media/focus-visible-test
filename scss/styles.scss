@@ -1,0 +1,192 @@
+/* Roboto Font */
+@import url("https://fonts.googleapis.com/css2?family=Duru+Sans&display=swap");
+
+//variables
+// primary branding
+$primary-color: #000a70 !important;
+$secondary-color: #005fec;
+// $primary-yellow: #ffb800;
+$text-color: #000a70;
+$font-size: 16px;
+
+$primary-font: "motiva-sans" sans-serif;
+
+$font-weights: (
+  "light": 300,
+  "normal": 400,
+  "bold": 700,
+  "bolder": 800,
+  "boldest": 900
+);
+
+// device widths
+// $phone-xxsmall: 320px;
+// $phone-xsmall: 576px;
+// $tablet-small: 768px;
+// $tablet-medium: 992px;
+// $tablet-large: 1024px;
+// $desktop-xlarge: 1200px;
+// $desktop-xxlarge: 1400px;
+// $desktop-xxxlarge: 1600px;
+// $desktop-4xlarge: 1800px;
+
+$box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.12);
+$box-shadow-hover: 0px 8px 12px rgba(0, 0, 0, 0.08);
+$transition: all 0.2s ease;
+
+//functions
+@function weight($weight-name) {
+  @return map-get($font-weights, $weight-name);
+}
+
+//mixins
+@mixin flex($direction) {
+  display: flex;
+  flex-direction: $direction;
+}
+
+/*resets*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-family: "Duru Sans", sans-serif;
+  font-size: 16px;
+}
+
+.container {
+  @include flex(column);
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+//animated button
+.button:before {
+  content: "";
+  position: absolute;
+  border: solid 0px #005fec;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  opacity: 0;
+  transition: all 150ms;
+  transition-timing-function: ease-in-out;
+  border-radius: 4px;
+  filter: blur(4px);
+}
+
+* {
+  position: relative;
+}
+*:focus {
+  outline: none;
+}
+
+.button:focus-visible:before {
+  content: "";
+  position: absolute;
+  border: solid 2px #005fec;
+  top: -8px;
+  bottom: -8px;
+  left: -8px;
+  right: -8px;
+  opacity: 1;
+  filter: blur(0px);
+}
+
+.button {
+  position: relative;
+  padding: 24px 48px;
+  border-radius: 4px;
+  background-color: #005fec;
+}
+
+//focus states
+a::before,
+.txt-link::before {
+  content: "";
+  position: absolute;
+  border: solid 0px $secondary-color;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  opacity: 0;
+  transition: $transition;
+  border-radius: 4px;
+  filter: blur(4px);
+}
+
+*:focus {
+  outline: none;
+}
+
+a:focus-visible:before,
+.txt-link:focus-visible:before {
+  content: "";
+  position: absolute;
+  border: solid 2px $secondary-color;
+  top: -8px;
+  bottom: -8px;
+  left: -8px;
+  right: -8px;
+  opacity: 1;
+  filter: blur(0px);
+}
+
+a:focus-visible:before,
+.txt-link:focus-visible:before {
+  left: -4px;
+  right: -4px;
+}
+
+.text-block-2 {
+  color: #fff;
+  font-weight: 700;
+}
+
+//animation
+.txt-link {
+  display: inline-flex;
+  font-size: 1.25rem;
+  align-items: center;
+
+  a {
+    color: $secondary-color;
+    font-weight: 700;
+    font-size: 1.25rem;
+    position: relative;
+
+    &:hover::after {
+      visibility: visible;
+      width: 100%;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: $secondary-color;
+      visibility: hidden;
+      transition: $transition;
+    }
+  }
+
+  img {
+    height: 0.75rem;
+    margin-left: 0.5rem;
+  }
+}
